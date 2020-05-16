@@ -19,3 +19,8 @@ These descriptions were taken from the UCI Web site () and broke down by the pro
 9. Sub_metering_3: Energy submetering No. 3 (in watt-hour of active energy).  It coresponds to an electric water-heater and
    an air-conditioner.
    
+# Changes to the data
+
+1. The zipped package has been pulled down from source and unzipped in Windows.  If this was practice, I would sock a copy of the zipped file in my repo as an archive.
+2.
+   
