@@ -21,6 +21,11 @@ These descriptions were taken from the UCI Web site () and broke down by the pro
    
 # Changes to the data
 
+# Plot 1
 1. The zipped package has been pulled down from source and unzipped in Windows.  If this was practice, I would sock a copy of the zipped file in my repo as an archive.
-2.
+2. The data was excerpted to the dates of interest, 2007-02-01 and 2007-02-02.  This was done BEFORE the date format was changed due to the length of the original data.
+3. 
+
+
+
    
