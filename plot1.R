@@ -11,112 +11,18 @@ dataTotal <- read.table("C:/dataScience/electricConsumption/exdata_data_househol
 # subset the data for the period of interest
 data<- subset(dataTotal, Date == "1/2/2007" | Date == "2/2/2007")
 
-data2 <- data
+data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
+data$Time <- strptime(data$Time, format = "%H:%M:%S")
 
-q <- nrow(data2)
-
-data2$Date <- as.Date(data2$Date, format = "%d/%m/%Y")
-data2$Time <- strptime(data2$Time, format = "%H:%M:%S")
-
-for (i in q) {
-  i
-  if (data2[i,"Date"] == "2007-02-01") {
-    data2[i,"Time"] <- format(data2[i,"Time"],"2007-02-01 %H:%M:%S")
-    data2[i,"Time"]
+# With a for next loop, the in has to be a list of values
+# The most elegant solution here would have been to just merge the two
+# columns
+v <- 1:nrow(data)
+for ( i in v) {
+  if (data[i,"Date"] == "2007-02-01") {
+    data[i,"Time"] <- format(data[i,"Time"],"2007-02-01 %H:%M:%S")
   } else {
-    data2[i,"Time"] <- format(data2[i,"Time"],"2007-02-02 %H:%M:%S")
-    data2[i,"Time"]
+    data[i,"Time"] <- format(data[i,"Time"],"2007-02-02 %H:%M:%S")
   }
 }
-
-
-
-
-data2[1:1440,"Time"] <- format(data2[1:1440,"Time"],"2007-02-01 %H:%M:%S")
-data2[1441:2880,"Time"] <- format(data2[1441:2880,"Time"],"2007-02-02 %H:%M:%S")
-
-if (data2[5,"Date"] == "2007-02-01") {
-  data2[5,"Time"] <- format(data2[5,"Time"],"2222-02-01 %H:%M:%S")
-  data2[5,"Time"]
-}
-
-
-
-for (i in 5) {
-  if (data2[i,"Date"] == "2007-02-01") {
-    data2[i,"Time"] <- format(data2[i,"Time"], "2222-02-01 $H:%M:%S")
-  }
-}
-
-
-
-
-
-
-
-
-for (i in data2$Time) {
-  if (data2$Date == "2007-02-01") {
-    data2[i,"Time"] <- format(data2[i,"Time"],"2007-02-01 %H:%M:%S")
-  }
-#  else {
-#    data2[i,"Time"] <- format(data2[i,"Time"],"2007-02-02 %H:%M:%S")
-#  }
-}
-
-
-
-
-
-
-
-
-
-
-
-for (i in q) {
-  if (data$Date == "2007-02-01") {
-    data2$Time <- format(data2$Time, "2007-02-01 %H:%M:%S")
-  }
-  else {
-    data2$Time <- format(data2$Time, "2007-02-02 %H:%M:%S")
-  }
-}
-
-
-
-
-
-
-
-# Convert the date/times
-if (data2$Date == "2007-02-01") {
-  sapply(data2$Time, FUN = (paste("2007-02-01", data2$Time, 
-                format = "%Y-%m-%d %H:%M:%S")))
-}
-
-data2$Date <- as.Date(data2$Date, format = "%d/%m/%Y")
-data2$Time <- strptime(data2$Time, format = "%H:%M:%S")
-
-
-
-
-
-
-
-if (data2$Date == "2007-02-01") {
-  lapply(data2$Time, format(data2$Time, "2007-02-01 %H:%M:%S"))
-}
-
-if (data2$Date == "2007-02-02") {
-  data2$Time <- format(data2$Time, "2007-02-02 %H:%M:%S")
-}
-#} else {
-#  data2$Time <- format(data2$Time, "2007-02-02 %H:%M:%S")
-#}
-
-
-
-
-
 
