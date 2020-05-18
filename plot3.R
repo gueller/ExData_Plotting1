@@ -27,12 +27,22 @@ for ( i in 1:nrow(data)) {
 }
 
 # Build the plot on screen and verify that it is what I want.
-plot(data$Time,(as.numeric(data$Global_active_power)), type = "l",
-  xlab = "", ylab = "Global Active Power (kilowatts)")
+plot(data$Time,(as.numeric(data$Sub_metering_1)), type = "l",
+     xlab = "", ylab = "Energy Sub metering")
+lines(data$Time, (as.numeric(data$Sub_metering_1)))
+lines(data$Time, (as.numeric(data$Sub_metering_2)), col = "red")
+lines(data$Time, (as.numeric(data$Sub_metering_3)), col = "blue")
+legend("topright", legend = c("Sub_metering_1", "Sub-metering_2",
+      "Sub_metering_3"), col = c("black", "red", "blue"), lty = 1)
 
 # Save off a copy of the plot into the filename
-png(filename = "plot2.png", width = 480, height = 480)
-plot(data$Time,(as.numeric(data$Global_active_power)), type = "l",
-     xlab = "", ylab = "Global Active Power (kilowatts)")
+png(filename = "plot3.png", width = 480, height = 480)
+plot(data$Time,(as.numeric(data$Sub_metering_1)), type = "l",
+     xlab = "", ylab = "Energy Sub metering")
+lines(data$Time, (as.numeric(data$Sub_metering_1)))
+lines(data$Time, (as.numeric(data$Sub_metering_2)), col = "red")
+lines(data$Time, (as.numeric(data$Sub_metering_3)), col = "blue")
+legend("topright", legend = c("Sub_metering_1", "Sub-metering_2",
+  "Sub_metering_3"), col = c("black", "red", "blue"), lty = 1)
 dev.off()
 
