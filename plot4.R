@@ -78,3 +78,4 @@ plot(data$Time,(as.numeric(data$Global_reactive_power)), type = "l",
 
 dev.off()
 
+
