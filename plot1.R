@@ -18,11 +18,22 @@ data$Time <- strptime(data$Time, format = "%H:%M:%S")
 # The most elegant solution here would have been to just merge the two
 # columns
 v <- 1:nrow(data)
-for ( i in v) {
+for ( i in 1:nrow(data)) {
   if (data[i,"Date"] == "2007-02-01") {
     data[i,"Time"] <- format(data[i,"Time"],"2007-02-01 %H:%M:%S")
   } else {
     data[i,"Time"] <- format(data[i,"Time"],"2007-02-02 %H:%M:%S")
   }
 }
+
+# Build the plot on screen and verify that it is what I want.
+plot1 <- hist(as.numeric(data$Global_active_power))
+plot(plot1, col = "red", main = "Global Active Power",
+     xlab = "Global Active Power (killowatts)")
+
+# Save off a copy of the plot into the filename
+png(filename = "plot1.png", width = 480, height = 480)
+plot(plot1, col = "red", main = "Global Active Power",
+     xlab = "Global Active Power (killowatts)")
+dev.off()
 
